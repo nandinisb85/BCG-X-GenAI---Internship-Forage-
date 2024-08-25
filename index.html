@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Financial Chatbot</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div style="width: 50%; margin: auto; padding-top: 50px;">
+        <h2>Ask a Financial Question</h2>
+        <input type="text" id="userInput" placeholder="Type your question here..." style="width: 100%; padding: 10px;">
+        <button onclick="getBotResponse()">Ask</button>
+        <p id="botResponse" style="padding-top: 20px;"></p>
+    </div>
+
+    <script>
+        function getBotResponse() {
+            var userInput = $("#userInput").val();
+            $.get("/get", { msg: userInput }, function(data) {
+                $("#botResponse").text(data);
+            });
+        }
+    </script>
+</body>
+</html>
